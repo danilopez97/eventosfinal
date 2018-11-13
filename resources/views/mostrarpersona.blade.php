@@ -30,15 +30,19 @@
         <td>{{$persona->edad}}</td>
         <td>{{$persona->telefono}}</td>
         
-   
+        @if(Auth::check())
         <td>
-         <a href="#" class="label label-primary">Leer</a>
-         <a href="#" class="label label-primary">Leer</a>
-         <a href="#" class="label label-primary">Leer</a>
-         
-        </td>
-            
-    </tr>
+       
+        <a href='{{ url("/persona/edit/{$persona->idpersona}") }}' class="label label-success">Modificar</a>
+        <a href='{{ url("/persona/delete/{$persona->idpersona}") }}' class="label label-danger">Borrar</a>
+         <td>
+         @endif
+        
+
+       
+
+       
+      </td>
         @endforeach
       @endif  
    

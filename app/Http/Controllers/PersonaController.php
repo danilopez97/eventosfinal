@@ -40,6 +40,13 @@ class PersonaController extends Controller
     public function store(Request $request)
     {
         //
+
+        $nombre = $request->input('nombre') ;
+        $edad = $request->input('edad') ;
+         $telefono = $request->input('telefono') ;
+         
+     DB::insert('insert into persona (nombre,edad,telefono) values(?,?,?) ',[$nombre,$edad,$telefono]);
+       return redirect('/mostrarpersona')->with('info', 'Persona fue agregada');
     }
 
     /**
@@ -62,6 +69,8 @@ class PersonaController extends Controller
     public function edit($id)
     {
         //
+        $persona=Persona::where('idpersona',$id)->first();
+        return view('edit_persona',['persona'=>$persona]);
     }
 
     /**
@@ -74,6 +83,24 @@ class PersonaController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $this->Validate($request, [
+            'nombre' => 'required',
+            'edad' => 'required',
+            'telefono' => 'required',
+            
+            
+          
+        ]);
+        $data = array(
+            'nombre' => $request->input('nombre'),
+            'edad' => $request->input('edad'),
+             'telefono' => $request->input('telefono')
+            
+        );
+        
+        Persona::where('idpersona',$id)->update($data);      
+        return redirect('/mostrarpersona')->with('info', 'Datos fueron actualizados');
     }
 
     /**
@@ -82,8 +109,10 @@ class PersonaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         //
+        Persona::where('idpersona', $id)->delete();        
+        return redirect('/mostrarpersona')->with('info', 'Persona eliminada');
     }
 }

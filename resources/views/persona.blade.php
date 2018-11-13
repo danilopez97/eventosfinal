@@ -20,21 +20,21 @@
         <div class="form-group">
           <label for="inputEmail" class="col-lg-2 control-label">Nombre</label>
           <div class="col-lg-10">
-            <input type="text" class="form-control" name="nombre" id="inputEmail" placeholder="Nombre">
+            <input type="text" class="form-control" name="nombre" id="inputEmail" placeholder="Nombre"  required autofocus>
           </div>
         </div>
 
          <div class="form-group">
           <label for="inputEmail" class="col-lg-2 control-label">Edad</label>
           <div class="col-lg-10">
-            <input type="text" class="form-control" name="edad" id="inputEmail" placeholder="Edad">
+            <input type="text" class="form-control" name="edad" id="inputEmail" placeholder="Edad" required autofocus>
           </div>
         </div>
 
          <div class="form-group">
           <label for="inputEmail" class="col-lg-2 control-label">Telefono</label>
           <div class="col-lg-10">
-            <input type="text" class="form-control" name="telefono" id="inputEmail" placeholder="Telefono  ">
+            <input type="text" class="form-control" name="telefono" id="inputEmail" placeholder="Telefono" required autofocus>
           </div>
         </div>
 
@@ -57,7 +57,7 @@
 
         <div class="form-group">
           <div class="col-lg-10 col-lg-offset-2">
-            <a href="{{ url('/mostrarmateria') }}" class="btn btn-default" >Regresar</a> 
+            <a href="{{ url('/mostrarpersona') }}" class="btn btn-default" >Regresar</a> 
             <button type="submit" class="btn btn-primary">Ingresar</button>
           </div>
         </div>

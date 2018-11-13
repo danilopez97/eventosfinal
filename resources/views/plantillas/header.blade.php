@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sistema Productos</title>
+	<title>Sistema eventos</title>
 	<link rel="stylesheet" type="text/css" href="{{ url('css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('css/hola.css') }}">
 	<script type="text/javascript" src="{{ url('js/jquery-3.2.1.js') }}" ></script>
