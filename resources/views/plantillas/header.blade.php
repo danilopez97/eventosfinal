@@ -30,14 +30,13 @@
       <a href="/mostrarpersona">Personas</a>
       <ul class="sub">
         <li><a href="/persona/create">Ingresar persona</a></li>
-        <li><a href="/mostrarproduccion">Produccion</a></li>
-        <li><a href="/produccion/create">Agregar Produccion</a></li>
+        
       </ul>
     </li>
     <li>
-      <a href="/mostrardetalle">Detalle Produccion</a>
+      <a href="/mostrarevento">Eventos</a>
       <ul class="sub">
-        <li><a href="/detalle/create">Agregar Materia a produccion</a></li>
+        <li><a href="/evento/create">Nuevo evento</a></li>
         
       </ul>  
     </li>

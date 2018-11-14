@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Persona;
-use DB;
 
 use Illuminate\Http\Request;
 
-class PersonaController extends Controller
+use App\Evento;
+use DB;
+class EventoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,9 @@ class PersonaController extends Controller
      */
     public function index()
     {
-        
-        $personas = Persona::all();
-        return view('mostrarpersona', ['personas' =>$personas]);
         //
+        $eventos = Evento::all();
+        return view('mostrarevento', ['eventos' =>$eventos]);
     }
 
     /**
@@ -29,7 +28,7 @@ class PersonaController extends Controller
     public function create()
     {
         //
-        return view ('persona');
+        return view ('evento');
     }
 
     /**
@@ -42,11 +41,11 @@ class PersonaController extends Controller
     {
         //
 
-        $nombre = $request->input('nombre') ;
-        $edad = $request->input('edad') ;
-        $telefono = $request->input('telefono') ; 
-        DB::insert('insert into persona (nombre,edad,telefono) values(?,?,?) ',[$nombre,$edad,$telefono]);
-        return redirect('/mostrarpersona')->with('info', 'Persona fue agregada');
+        $nombre_evento = $request->input('nombre_evento') ;
+        $descripcion_evento = $request->input('descripcion_evento') ;
+        $fecha = $request->input('fecha') ; 
+        DB::insert('insert into evento (nombre_evento,descripcion_evento,fecha) values(?,?,?) ',[$nombre_evento,$descripcion_evento,$fecha]);
+        return redirect('/mostrarevento')->with('info', 'Evento agregado');
     }
 
     /**
@@ -69,8 +68,8 @@ class PersonaController extends Controller
     public function edit($id)
     {
         //
-        $persona=Persona::where('idpersona',$id)->first();
-        return view('edit_persona',['persona'=>$persona]);
+        $evento=Evento::where('idevento',$id)->first();
+        return view('edit_evento',['evento'=>$evento]);
     }
 
     /**
@@ -83,24 +82,23 @@ class PersonaController extends Controller
     public function update(Request $request, $id)
     {
         //
-
         $this->Validate($request, [
-            'nombre' => 'required',
-            'edad' => 'required',
-            'telefono' => 'required',
+            'nombre_evento' => 'required',
+            'descripcion_evento' => 'required',
+            'fecha' => 'required',
             
             
           
         ]);
         $data = array(
-            'nombre' => $request->input('nombre'),
-            'edad' => $request->input('edad'),
-             'telefono' => $request->input('telefono')
+            'nombre_evento' => $request->input('nombre_evento'),
+            'descripcion_evento' => $request->input('descripcion_evento'),
+             'fecha' => $request->input('fecha')
             
         );
         
-        Persona::where('idpersona',$id)->update($data);      
-        return redirect('/mostrarpersona')->with('info', 'Datos fueron actualizados');
+        Evento::where('idevento',$id)->update($data);      
+        return redirect('/mostrarevento')->with('info', 'Datos fueron actualizados');
     }
 
     /**
@@ -112,7 +110,7 @@ class PersonaController extends Controller
     public function delete($id)
     {
         //
-        Persona::where('idpersona', $id)->delete();        
-        return redirect('/mostrarpersona')->with('info', 'Persona eliminada');
+        Evento::where('idevento', $id)->delete();        
+        return redirect('/mostrarevento')->with('info', 'Evento eliminado');
     }
 }
