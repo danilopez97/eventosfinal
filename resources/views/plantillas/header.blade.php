@@ -41,11 +41,10 @@
       </ul>  
     </li>
     <li>
-      <a href="/mostrarstock">Bodega de Productos</a>
+      <a href="/mostrarinscripcion">Inscripcion</a>
       <ul class="sub">
-        <li><a href="/stock/create">Ingreso de Productos a Bodega</a></li>
-        <li><a href="/mostrarcliente">Clientes</a></li>
-        <li><a href="/cliente/create">Agregar Clientes</a></li>
+        <li><a href="/inscripcion/create">Nueva Inscripción</a></li>
+       
       </ul>  
     </li>
     <li>

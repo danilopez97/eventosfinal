@@ -36,6 +36,10 @@ Route::get('evento/edit/{idevento}', 'EventoController@edit');
 Route::post('evento/update/{idevento}', 'EventoController@update');
 Route::get('evento/delete/{idevento}', 'EventoController@delete');
 
+
+Route::post('inscripcion/store', 'InscripcionController@store');
+Route::get('inscripcion/create', 'InscripcionController@create');
+
 });
 
 
