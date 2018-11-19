@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Evento;
 use DB;
+use Storage;
 class EventoController extends Controller
 {
     /**
@@ -44,7 +45,11 @@ class EventoController extends Controller
         $nombre_evento = $request->input('nombre_evento') ;
         $descripcion_evento = $request->input('descripcion_evento') ;
         $fecha = $request->input('fecha') ; 
-        DB::insert('insert into evento (nombre_evento,descripcion_evento,fecha) values(?,?,?) ',[$nombre_evento,$descripcion_evento,$fecha]);
+
+        $imagen = $request->file('imagen') ;
+         $file_route=time().'_'.$imagen->getClientOriginalName();
+         Storage::disk('img_productos')->put ($file_route,file_get_contents($imagen->getRealPath()));
+        DB::insert('insert into evento (nombre_evento,descripcion_evento,fecha,imagen) values(?,?,?,?) ',[$nombre_evento,$descripcion_evento,$fecha,$file_route]);
         return redirect('/mostrarevento')->with('info', 'Evento agregado');
     }
 

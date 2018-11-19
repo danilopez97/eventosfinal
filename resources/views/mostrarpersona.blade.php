@@ -15,9 +15,10 @@
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
-      <th>nombre</th>
-      <th>edad</th>
-      <th>telefono</th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Telefono</th>
+      <th>Fotografía</th>
    
     
     </tr>
@@ -29,14 +30,17 @@
           <td>{{$persona->nombre}}</td>
         <td>{{$persona->edad}}</td>
         <td>{{$persona->telefono}}</td>
-        
+        <td>
+          <img src="{{asset('img_productos/')}}/{{$persona->imagen}}" width="100" heigth="100"><br>  </td>
         @if(Auth::check())
         <td>
-       
         <a href='{{ url("/persona/edit/{$persona->idpersona}") }}' class="label label-success">Modificar</a>
         <a href='{{ url("/persona/delete/{$persona->idpersona}") }}' class="label label-danger">Borrar</a>
+      <!--a href='{{ url("/inscripcion/show/{$persona->idpersona}") }}' class="label label-primary">Asignacion</a>-->
+        <a href='{{ url("/inscripcion/listarinscripcion/{$persona->idpersona}") }}' class="label label-primary">Ver eventos</a>
+
          <td>
-         @endif
+      @endif
         
 
        

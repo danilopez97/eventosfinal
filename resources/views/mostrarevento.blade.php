@@ -30,8 +30,8 @@
           <td>{{$evento->nombre_evento}}</td>
         <td>{{$evento->descripcion_evento}}</td>
         <td>{{$evento->fecha}}</td>
-        
-       
+        <td>
+          <img src="{{asset('img_productos/')}}/{{$evento->imagen}}" width="100" heigth="100"><br>  </td>
         
 
        @if(Auth::check())

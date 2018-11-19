@@ -32,7 +32,7 @@
 
 
 
-          Elija los eventos que practica:<br>
+          Elija sus eventos<br>
   @foreach($eventos as $evento)
   <input type="checkbox" class="form" name="checkbox[]"  value="{{ $evento->idevento }}">{{ $evento->nombre_evento }}<br>
   @endforeach

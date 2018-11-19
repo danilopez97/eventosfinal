@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Persona;
+use App\Evento;
 use DB;
+use Storage;
 
 use Illuminate\Http\Request;
 
@@ -18,6 +20,7 @@ class PersonaController extends Controller
         
         $personas = Persona::all();
         return view('mostrarpersona', ['personas' =>$personas]);
+
         //
     }
 
@@ -29,7 +32,13 @@ class PersonaController extends Controller
     public function create()
     {
         //
-        return view ('persona');
+        $eventos = Evento::all();
+         $personas=Persona::all();
+         return view('persona',[
+             'eventos' => $eventos,
+             'personas' => $personas
+             
+         ]);
     }
 
     /**
@@ -42,13 +51,19 @@ class PersonaController extends Controller
     {
         //
 
-        $nombre = $request->input('nombre') ;
-        $edad = $request->input('edad') ;
-        $telefono = $request->input('telefono') ; 
-        DB::insert('insert into persona (nombre,edad,telefono) values(?,?,?) ',[$nombre,$edad,$telefono]);
-        return redirect('/mostrarpersona')->with('info', 'Persona fue agregada');
-    }
+         $nombre = $request->input('nombre') ;
+         $edad = $request->input('edad') ;
+         $telefono = $request->input('telefono') ; 
 
+         $imagen = $request->file('imagen') ;
+         $file_route=time().'_'.$imagen->getClientOriginalName();
+         Storage::disk('img_productos')->put ($file_route,file_get_contents($imagen->getRealPath()));
+
+         DB::insert('insert into persona (nombre,edad,telefono,imagen) values(?,?,?,?) ',[$nombre,$edad,$telefono,$file_route]);
+         return redirect('/mostrarpersona')->with('info', 'Persona fue agregada');
+
+       
+    }
     /**
      * Display the specified resource.
      *
@@ -83,19 +98,22 @@ class PersonaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
 
         $this->Validate($request, [
             'nombre' => 'required',
             'edad' => 'required',
             'telefono' => 'required',
+
             
-            
-          
+
         ]);
         $data = array(
             'nombre' => $request->input('nombre'),
             'edad' => $request->input('edad'),
-             'telefono' => $request->input('telefono')
+            'telefono' => $request->input('telefono')
+            
+
             
         );
         

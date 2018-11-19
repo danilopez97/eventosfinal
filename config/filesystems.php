@@ -43,6 +43,10 @@ return [
 
     'disks' => [
 
+        'img_productos' => [
+            'driver' => 'local',
+            'root' => public_path('img_productos'),
+        ],
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),

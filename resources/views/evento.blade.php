@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-md-6">
 			
-			<form class="form-horizontal" method="POST" action="{{ url('/evento/store')}}">
+			<form class="form-horizontal" method="POST" action="{{ url('/evento/store')}}" enctype="multipart/form-data">
       {{ csrf_field() }}
       <fieldset>
         <legend>Ingreso de Eventos</legend>
@@ -38,7 +38,12 @@
           </div>
         </div>
 
-        
+         <div class="form-group">
+          <label for="inputEmail" class="col-lg-2 control-label">Imagen</label>
+          <div class="col-lg-10">
+            <input type="file" class="form-control" name="imagen" id="inputEmail" placeholder="Imagen">
+          </div>
+        </div>
 
         
 

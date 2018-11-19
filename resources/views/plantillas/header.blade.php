@@ -17,45 +17,61 @@
 <span class="decor"></span>
 <nav>
   <ul class="primary">
+    
     <li>
-      <a href="/home">home</a>
+      <a href="#">Personas</a>
       <ul class="sub">
-        <li><a href="/producto/create">Crear Producto</a></li>
-        <li><a href="/mostrarrecetas">Recetas</a></li>
-        <li><a href="/receta/create">Crear Recetas</a></li>
-      
-      </ul>
-    </li>
-    <li>
-      <a href="/mostrarpersona">Personas</a>
-      <ul class="sub">
+      <li><a href="/mostrarpersona">Listar</a></li>
         <li><a href="/persona/create">Ingresar persona</a></li>
         
       </ul>
     </li>
     <li>
-      <a href="/mostrarevento">Eventos</a>
+      <a href="#">Eventos</a>
       <ul class="sub">
+      <li><a href="/mostrarevento">Listar</a></li>
+
         <li><a href="/evento/create">Nuevo evento</a></li>
         
       </ul>  
     </li>
     <li>
-      <a href="/mostrarinscripcion">Inscripcion</a>
+      <a href="#">Inscripcion</a>
       <ul class="sub">
-        <li><a href="/inscripcion/create">Nueva Inscripción</a></li>
-       
+        <li><a href="/personasinscritas">Inscribir</a></li>
+        <li><a href="/inscripcion/cambiarasignacion">Listar</a></li>       
       </ul>  
     </li>
+
+    @if(Auth::check())
     <li>
-      <a href="/mostrarventa">Ventas</a>
+      <a href="#">{{ Auth::user()->name }}</a>
       <ul class="sub">
-        <li><a href="/venta/create">Realizar Venta</a></li>
-        <li><a href="/mostrarventasreportes">reporte venta</a></li>
-        <li><a href="/mostrarprimareportes">reporte Materia Prima</a></li>
+        <li><a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Cerrar Sesión
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                          </li>
+      
      
       </ul>  
     </li>
+    @else
+    <li>
+      <a href="{{ route('login') }}">Iniciar Sesión</a>
+     
+    </li>
+    @endif
+    
+
+
+
+
+
   </ul>
 </nav>
 </div>
